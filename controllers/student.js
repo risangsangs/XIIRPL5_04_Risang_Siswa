@@ -6,25 +6,25 @@ module.exports = {
             const students = await Student.find().sort({ nis: 'asc' });
 
             const simplifiedData = students.map(student => ({
-                name: student.name,
-                class: student.class,
-                status: student.status
+                name: student.nama,
+                class: student.kelas,
+                status: student.nis
             }));
 
             if (students.length > 0) {
-                res.status(200).json({
+                return res.status(200).json({
                     status: 200,
                     data: simplifiedData,
                     method: req.method,
                     url: req.url
                 });
             }
-            res.status(404).json({
+            return res.status(404).json({
                 status: 404,
                 message: "Data is not found"
             });
         } catch (error) {
-            res.status(400).json({
+            return res.status(400).json({
                 status: 400,
                 message: error.message
             });

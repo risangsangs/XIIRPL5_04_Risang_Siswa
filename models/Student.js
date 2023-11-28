@@ -3,26 +3,43 @@ const mongoose = require('mongoose')
 // field status = hadir || terlambat || izin || sakit || alpha
 
 const StudentSchema = new mongoose.Schema({
-    nis: {
+    nama: {
         type: String,
-        required: [true, 'nis is required'],
+        required: [true, 'Silahkan isikan nama'],
+    },
+    kelas:{
+        type: String,
+        require: [true, 'Silahkan isikan kelas'],
+    },
+    no_absen:{
+        type: String,
+        require: [true, 'Silahkan isikan nomor absen'],
+    },
+    nis:{
+        require: [true, 'Silahkan isikan nomor NIS'],
+        type: String,
         unique: true
     },
-    name: {
+    ttl:{
         type: String,
-        required: [true, 'Fill in your name first, boss']
+        require: [true, 'Silahkan isikan tempat tanggal lahir'],
     },
-    class: {
+    agama:{
         type: String,
-        required: [true, 'class is required']
+        require: [true, 'Silahkan isikan agama'],
     },
-    status: {
+    alamat:{
         type: String,
-        required: [true, 'status is required']
+        require: [true, 'Silahkan isikan alamat'],
+
     },
-    addInformation: {
-        type: String
+    email: {
+        type: String,
+        required: true, 
+        unique: true,
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Silahkan masukan email validasi!']
     }
+
 },
     {
         timestamps: true
